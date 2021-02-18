@@ -137,6 +137,7 @@ function getComputedStyle(el) {
 };
 
 export default class WOW {
+  // eslint-disable-next-line no-undef
   defaults = {
     boxClass: 'wow',
     animateClass: 'animated',
@@ -148,7 +149,10 @@ export default class WOW {
     resetAnimation: true,
   };
 
-  constructor(options = {}) {
+  constructor(options = {}, before) {
+    if (before) {
+      before();
+    }
     this.start = this.start.bind(this);
     this.resetAnimation = this.resetAnimation.bind(this);
     this.scrollHandler = this.scrollHandler.bind(this);
@@ -158,7 +162,7 @@ export default class WOW {
     if (options.scrollContainer != null) {
       this.config.scrollContainer = document.querySelector(options.scrollContainer);
     }
-  // Map of elements to animation names:
+    // Map of elements to animation names:
     this.animationNameCache = new WeakMap();
     this.wowEvent = createEvent(this.config.boxClass);
   }
@@ -210,7 +214,7 @@ export default class WOW {
     }
   }
 
-// unbind the scroll event
+  // unbind the scroll event
   stop() {
     this.stopped = true;
     removeEvent(this.config.scrollContainer || window, 'scroll', this.scrollHandler);
@@ -246,7 +250,7 @@ export default class WOW {
     }
   }
 
-// show box element
+  // show box element
   show(box) {
     this.applyStyle(box);
     box.className = `${box.className} ${this.config.animateClass}`;
@@ -338,7 +342,7 @@ export default class WOW {
     }
 
     if (aName === 'none') {
-      return '';  // SVG/Firefox, unable to get animation name?
+      return ''; // SVG/Firefox, unable to get animation name?
     }
 
     return aName;
@@ -396,7 +400,7 @@ export default class WOW {
     return top;
   }
 
-// check if box is visible
+  // check if box is visible
   isVisible(box) {
     const offset = box.getAttribute('data-wow-offset') || this.config.offset;
     const viewTop = (

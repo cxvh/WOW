@@ -1,4 +1,5 @@
 .DS_Store
 .grunt/
+dist/
 node_modules/
 _SpecRunner.html

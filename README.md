@@ -1,3 +1,26 @@
+
+# 新增
+- before钩子，在初始化之前执行
+```js
+wow = new WOW(
+  {
+    animateClass: 'animated',
+    offset:       100,
+    callback:     function(box) {
+      console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+    }
+  },
+  function(){
+    document.querySelectorAll('#article-container>*').forEach(function(item){
+      item.classList.add('wow')
+      item.classList.add('animate__zoomIn')
+    })
+  }
+);
+wow.init();
+```
+<hr>
+
 # WOW.js [![Build Status](https://secure.travis-ci.org/graingert/WOW.svg?branch=master)](http://travis-ci.org/graingert/WOW)
 
 Temporary deprecation:

@@ -63,9 +63,9 @@
   }
 
   function createEvent(event) {
-    var bubble = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
-    var cancel = arguments.length <= 2 || arguments[2] === undefined ? false : arguments[2];
-    var detail = arguments.length <= 3 || arguments[3] === undefined ? null : arguments[3];
+    var bubble = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    var cancel = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+    var detail = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
     var customEvent = void 0;
     if (document.createEvent != null) {
@@ -208,7 +208,8 @@
 
   var WOW = function () {
     function WOW() {
-      var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var before = arguments[1];
 
       _classCallCheck(this, WOW);
 
@@ -236,6 +237,9 @@
 
       this.vendors = ['moz', 'webkit'];
 
+      if (before) {
+        before();
+      }
       this.start = this.start.bind(this);
       this.resetAnimation = this.resetAnimation.bind(this);
       this.scrollHandler = this.scrollHandler.bind(this);
@@ -249,6 +253,8 @@
       this.animationNameCache = new WeakMap();
       this.wowEvent = createEvent(this.config.boxClass);
     }
+    // eslint-disable-next-line no-undef
+
 
     _createClass(WOW, [{
       key: 'init',

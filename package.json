@@ -46,6 +46,7 @@
     "load-grunt-tasks": "^3.5.0"
   },
   "scripts": {
-    "test": "grunt travis"
+    "test": "grunt travis",
+    "start": "grunt"
   }
 }
