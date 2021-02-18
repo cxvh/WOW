@@ -22,4 +22,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: npm install
-    - run: npx grunt
+    - run: npx grunt build

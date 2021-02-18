@@ -108,13 +108,16 @@ const MutationObserver =
   class MutationObserver {
     constructor() {
       if (typeof console !== 'undefined' && console !== null) {
+        // eslint-disable-next-line no-console
         console.warn('MutationObserver is not supported by your browser.');
+        // eslint-disable-next-line no-console
         console.warn(
           'WOW.js cannot detect dom mutations, please call .sync() after loading new content.'
         );
       }
     }
 
+    // eslint-disable-next-line no-undef
     static notSupported = true;
 
     observe() {}
@@ -276,6 +279,7 @@ export default class WOW {
     return this.animate(() => this.customStyle(box, hidden, duration, delay, iteration));
   }
 
+  // eslint-disable-next-line no-undef
   animate = (function animateFactory() {
     if ('requestAnimationFrame' in window) {
       return callback => window.requestAnimationFrame(callback);
@@ -310,6 +314,7 @@ export default class WOW {
     return box;
   }
 
+  // eslint-disable-next-line no-undef
   vendors = ['moz', 'webkit'];
   vendorSet(elem, properties) {
     for (const name in properties) {

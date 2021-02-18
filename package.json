@@ -47,6 +47,6 @@
   },
   "scripts": {
     "test": "grunt travis",
-    "start": "grunt"
+    "build": "grunt build"
   }
 }

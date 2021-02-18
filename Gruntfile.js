@@ -90,5 +90,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', mainTasks);
   // Travis CI task.
-  grunt.registerTask('travis', ['eslint', 'babel', 'coffee', 'uglify', 'jasmine']);
+  // grunt.registerTask('travis', ['eslint', 'babel', 'coffee', 'uglify', 'jasmine']);
+  grunt.registerTask('build', ['eslint', 'babel', 'coffee', 'uglify']);
 };
